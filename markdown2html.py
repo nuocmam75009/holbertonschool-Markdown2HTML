@@ -1,29 +1,20 @@
 #!/usr/bin/python3
-"""
-Markdown to HTML conversion script with basic argument validation
-"""
 import sys
 import os
 
-def main():
-    """
-    Main function to convert markdown to HTML
-    """
-    if len(sys.argv) < 3:
-        # Check if the number of arguments is less than 3
-        sys.stderr.write('Usahe: ./markdown2html.py README.md README.html\n')
-        sys.exit(1)
+# Check if the number of arguments is less than 2
+if len(sys.argv) < 3:
+    print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
+    sys.exit(1)
 
-    # Get input and output file names from cmd line args
-    markdown_file = sys.argv[1]
-    html_file = sys.argv[2]
+# Extract the filenames from the arguments
+markdown_file = sys.argv[1]
+output_file = sys.argv[2]
 
-    if not os.path.exists(markdown_file):
-        # Check if the markdown file exists
-        sys.stderr.write(f"Missing {markdown_file}\n")
-        sys.exit(1)
+# Check if the Markdown file exists
+if not os.path.exists(markdown_file):
+    print(f"Missing {markdown_file}", file=sys.stderr)
+    sys.exit(1)
 
-        sys.exit(0)
-
-if __name__ == "__main__":
-    main()
+# If no errors, exit normally with status 0
+sys.exit(0)
